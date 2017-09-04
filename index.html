@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>What drives Infosys stock performance?</title>
+  <meta charset="utf-8">
+  <meta name="description" content="What drives Infosys stock performance?">
+  <meta name="author" content="Krupakar Singampally">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>What drives Infosys stock performance?</h1>
+    <h2>An initial exploration</h2>
+    <p>Krupakar Singampally<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Introduction</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Infosys Limited is a multinational IT consulting firm based in India</li>
+<li>In 2017, it exceeded annual revenue of $ 10 Billion and has over 200,000 employees</li>
+<li>Infoys has been listed on the NASDAQ since 1999</li>
+<li>This project sets up a very initial exploration of the question: What drives Infosys stock performance?</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>How has the stock performed over the years?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Infosys is listed as &#39;INFY&#39; on the NASDAQ since 1999. This analysis looks at stock performance between 2009 and 2017. The following summary features can be noted of the stock performance:</p>
+
+<pre><code>## [1] &quot;INFY&quot;
+</code></pre>
+
+<pre><code>##      Index              INFY.Close   
+##  Min.   :2007-01-03   Min.   : 5.28  
+##  1st Qu.:2009-09-02   1st Qu.:11.53  
+##  Median :2012-05-02   Median :13.80  
+##  Mean   :2012-05-03   Mean   :13.57  
+##  3rd Qu.:2015-01-04   3rd Qu.:15.76  
+##  Max.   :2017-09-01   Max.   :20.00
+</code></pre>
+
+<p>Thus, The closing stock price of the stock has varied from $ 5.28 to $ 20.</p>
+
+<p>The stock price information is obtained from Google. </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>How does the Shiny app help?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The project sets up a Shiny app that allows the user to see how stock price trends  relate to the following performance parameters:</p>
+
+<ul>
+<li>Quarterly revenue</li>
+<li>Quarterly operating margin</li>
+<li>Annual revenue</li>
+<li>% increase in Q-o-Q revenue</li>
+<li>Key events such as management changes</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Key elements of the Shiny app</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Stock price time series data is obtained from Google using the &#39;zoo&#39; package</li>
+<li>Quarterly end points of the closing stock price are selected into a new dataframe</li>
+<li>Revenue and margin information is obtained from the Infosys website. They are pre-procossed into a csv file</li>
+<li>Management changes by date have been collected into a csv file and ingested</li>
+<li>The GoogleViz package is used to generate combo plots that juxtapose stock price with revenue </li>
+<li>The UI allows the user to select each combo graph to examine trends one by one</li>
+<li>The Application can be accessed here: <a href="https://svkrup.shinyapps.io/InfShiny/" target="_blank">Infosys Performance</a> </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Initial observations</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Revenue has increased continuously for all quarters and years from 2009, but the stock price has moved up and down over the years. Hence, absolute revenue may not be a primary feature<br></li>
+<li>This is the same for annual revenue. Annual revenue is computed as a sum of quarterly revenue from April to March, and the March end stock price is used for comparison</li>
+<li>Operating margin has seen quite a bit of fluctuation across the years. But stock price is not exactly in tune with the trends of OM</li>
+<li>The % Q-o-Q revenue growth seems to be much more correlated to stock price movements. QoQR is the % growth in current quarter revenue from the same quarter in the previous year</li>
+<li>Key leadership changes seem to preceed a stock price trend. The movement can be negative or positive </li>
+</ul>
+
+<p><strong>Conclusion:</strong> Key performance indicators certainly seem to have a predictable impact on the stock price. Other factors will also need to be examined before model creation. </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Introduction'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='How has the stock performed over the years?'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='How does the Shiny app help?'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Key elements of the Shiny app'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Initial observations'>
+         5
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
